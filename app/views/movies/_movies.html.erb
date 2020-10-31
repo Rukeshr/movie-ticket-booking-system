@@ -1,0 +1,19 @@
+<div class="container">
+   <% @movies.each do |movie| %>
+        <div class="col mb-4">
+            <div class="card">
+            <%= image_tag("poster.png", :alt => "rss feed", :class => "card-img") %>
+                <div class="card-body">
+                    <h5 class="card-title"><%= movie.movie_title %></h5>
+                    <p class="card-text"><%= movie.movie_type %></p>
+                    <p class="card-text"><%= movie.language %></p>
+                    <%= link_to 'Show details', movie_path(movie), class:"btn btn-info" %>
+                    <%= link_to 'Edit', edit_movie_path(movie), class:"btn btn-warning" %>
+                </div>
+            </div>
+                <div class="card-footer text-muted">
+                <small>Updated <%= time_ago_in_words(movie.updated_at) %> ago</small>
+                </div>
+        </div>
+   <% end %>
+</div>

@@ -1,0 +1,74 @@
+<div class="container">
+    <h1 class="text-center mt-4">Edit movie details</h1>
+        <div class="container">
+    <% if @movie.errors.any?%>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <h4 class="alert-heading">The following errors preventing the <%= @movie.class.name.downcase %> from saving!</h4>
+        <ul> 
+            <% @movie.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>  
+    <% end %>
+</div>
+
+<%= form_with(model: @movie, local: true) do |f|%>
+        <div class="form-group row">
+            <%= f.label :movie_title, class: "col-2 col-form-label" %> 
+            <div class="col-08">
+            <%= f.text_field :movie_title, class: "form-control shadow rounded", placeholder: "Title of the Movie" %>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <%= f.label :director, class: "col-2 col-form-label" %> 
+            <div class="col-08">
+            <%= f.text_field :director, class: "form-control shadow rounded", placeholder: "Name of the director" %>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <%= f.label :actors, class: "col-2 col-form-label" %> 
+            <div class="col-08">
+            <%= f.text_field :actors, class: "form-control shadow rounded", placeholder: "Name of the Actors" %>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <%= f.label :movie_type, class: "col-2 col-form-label" %> 
+            <div class="col-08">
+            <%= f.text_field :movie_type, class: "form-control shadow rounded", placeholder: "Movie type" %>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <%= f.label :language, class: "col-2 col-form-label" %> 
+            <div class="col-08">
+            <%= f.text_field :language, class: "form-control shadow rounded", placeholder: "Enter the Languages" %>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <%= f.label :show_time, class: "col-2 col-form-label" %> 
+            <div class="col-08">
+            <%= f.datetime_select :show_time, class: "form-control shadow rounded" %>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <%= f.label :image, class: "col-2 col-form-label" %> 
+            <div class="col-08">
+            <%= f.file_field :image, class: "form-control shadow rounded" %>
+            </div>
+        </div>
+
+        <p class="form-group row justify-content-center">
+        <%= f.submit class: "btn btn-outline-dark btn-lg" %>
+        </p>
+     <% end %>
+    </div>
+</div>
