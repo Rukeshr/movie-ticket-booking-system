@@ -8,9 +8,10 @@ class  UsersController < ApplicationController
         @user = User.new(params.require(:user).permit(:username, :email, :password))
         if @user.save
           session[:user_id] = @user.id
-          flash[:notice] = "Welcome to the Movie time#{@user.username}, you have successfully signed up"
+          flash[:notice] = "Welcome to the Movie time #{@user.username}, you have successfully signed up"
           redirect_to movies_path
         else
+          flash.now[:alert] = "Please enter valid crendentials"
           render 'new'
         end
       end
